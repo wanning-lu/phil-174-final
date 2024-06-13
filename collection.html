@@ -3,9 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <title>Data Collection</title>
 </head>
 <body>
+    <div style="display: flex; justify-content: space-between; margin: 3vh 3vw;">
+        <div><a href="index.html" style="text-decoration: none; color: black">Home</a></div>
+        <div class="nav-wrapper">
+            <div>Data Collection</div>
+            <div>|</div>
+            <a href="analysis.html">Analysis</a>
+            <div>|</div>
+            <a href="">Results</a>
+        </div>
+        <div></div>
+    </div>
+    <div class="header-title" style="margin-top: 5vh; margin-bottom: 3vh">The Process</div>
+    <div class="subheading">Teaching styles</div>
+    <div class="body-text">
+    To even begin thinking about how we should measure teaching styles, we first need to define the categorizations of
+    teaching styles. To capture these different styles, I will be using the categorizations from
+    <a href="https://doi.org/10.1016/j.acra.2018.03.025">Sivarajah, 2018</a> and <a href="https://www.schoollearningresources.com/PDF/_1.Effectiveteachingmethodsathighereducationlevel.pdf">Sajjad, 2010</a>. 
+    Sivarajah looks at more modern styles of teaching, which include:
+        <table style="width:100%">
+            <tr>
+                <th>Audience Response Systems (ARS)</th>
+                <td>These are most often known as "clickers" or "iClickers". During lectures, responses entered onto clickers
+                    are anonymous, encouraging participation without the need to speak up. Additionally, some professors may
+                    choose to use clickers as a metric to measure participation and make it mandatory by associating
+                    clicker IDs with student IDs. Some ARSs have the ability for students to send in questions during the
+                    lecture, reducing the pressure of needing to speak out loud.
+                </td>
+            </tr>
+            <tr>
+                <th>Remote teaching</th>
+                <td>Remote lectures exploded in 2020 out of necessitiy during the COVID pandemic. Students were able to
+                    attend lectures from the comfort of their own homes, and these lectures were typically hosted on
+                    video conferencing platforms like Zoom. Remote teaching may incorporate ARSs, as well as alleviate
+                    the tedium of commute, especially for those who live off campus. Additionally, unlike an in-person
+                    lecture in a spacey lecture hall, Zoom allows for students to interact with whoever they would
+                    like through the chat feature. It also gives students the option to voice their opinions through
+                    text rather than through voice.
+                </td>
+            </tr>
+            <tr>
+                <th>Active Learning</th>
+                <td>This can be described as a broad category of teaching styles–any teaching style that involves the
+                    student participating other than "watching, listening, and taking notes" as described by
+                    <a href="https://www.cte.cornell.edu/teaching-ideas/engaging-students/active-learning.html">Cornell University</a>.
+                    In other words, active learning requires the student to engage with the information in a deeper sense,
+                    whether it be applying it through problem solving, making new deductions, or connecting their own
+                    experiences. This is more effective than just simple note-taking, since it requires the student to
+                    interact with the newly acquired knowledge in more than one way.
+                </td>
+            </tr>
+            <tr>
+                <th>Flipped classrooms</th>
+                <td>Flipped classrooms are essentially a full incorporation of active learning into the classroom. Rather 
+                    than having the student learn during lecture and complete assignments outside of lecture, students
+                    are instead asked to review material before class, which they will then apply during class through
+                    case-based scenarios, problem solving, and discussions.
+                </td>
+            </tr>
+        </table>
+    Sajjad, on the other hand, attempts to generally categorize all forms of teaching, which include:
+        <ul style="margin: 2vh 0;">
+            <li>Lectures</li>
+            <li>Group discussions</li>
+            <li>Individual presentations</li>
+            <li>Assignments</li>
+            <li>Seminars</li>
+            <li>Workshops</li>
+            <li>Conferences</li>
+            <li>Brainstorming</li>
+            <li>Role plays</li>
+            <li>Case studies</li>
+        </ul>
+    </div>
+    <div class="body-text">Most of these seem to have a common theme of active learning vs. lecture-style, with the exception
+        of remote learning, which is medium-dependent. Most, if not all, of these styles can be incorporated both in-person
+        and online; however, limitations may apply depending on the medium. That being said, I categorized the styles into
+        active and lecture, as shown below:
+    </div>
+    <div style="padding: 1vh 30vw;">
+        <img src="images/teaching_styles.png" alt="active vs lecture learning">
+    </div>
+    <div class="body-text">To record the efficiency of these various teaching styles, I’ll
+    be collecting data from classes in various departments throughout the period of a quarter. First, I’ll collect consent
+    from the professors to observe their teaching styles and conduct the study in their classes. Next, I will periodically
+    distribute quizzes after the end of lectures to assess information retention from students. These quizzes will be
+    designed by professors themselves and are directly based off information taught in lecture, as well as completable
+    within 5 minutes. Additionally, they will have a set number of points so that I can compare scores across different
+    lectures.</div>
+    <div style="padding: 5vh 30vw;">
+        <img src="images/collection_process.png" alt="steps of the collection process">
+    </div>
+    <div class="body-text">Data will be collected in the following form (as JSON, for clarity). Note that each data value
+        represents one class session.</div>
+    <div style="margin: 1vh 30vw; margin-bottom: 5vh; background-color: white">
+        <code>
+            data_value {<br/>
+            &emsp;string: department,<br/>
+            &emsp;string: professor,<br/>
+            &emsp;string[]: teaching_styles,<br/>
+            &emsp;string{}: demographic_information,<br/>
+            &emsp;float: score<br/>
+            }
+        </code>
+    </div>
     
+
+    <div style="text-align: center; font-weight: bold; margin: 1vh 30vw; font-size: 1.5rem;">Frequently Asked Questions</div>
+    <div style="margin: 0 30vw;">
+        <button class="accordion">I’m a student and I’m concerned about my data being collected in this study.</button>
+        <div class="panel">
+            <p>If you’re worried about your privacy, then no worries! During the quizzes, you will be able to opt-out in two places.
+            Firstly, you can opt-out from doing the quiz altogether–this will in no way affect your grade. Secondly, if you decide
+            to do the quiz but wish to remain anonymous/forego demographic information collection, then you may opt-out from that as
+            well. Additionally, I will <em>not</em> collect any identifying information, such as name, PID, or email through the study.
+            Your responses will be anonymized as much as possible. To achieve this, I will have the professor send me the information
+            using the data value format as listed above. This way, privacy relations are maintained–professors will still be able to
+            associate your score with your name, as to ensure data integrity, but I will only receive the data necessary to the study.
+        </p>
+        </div>
+    </div>
+    <div style="margin: 0 30vw;">
+        <button class="accordion">What if students just decided not to do the quizzes, especially those that didn't feel like they learned anything?</button>
+        <div class="panel">
+            <p>Response bias is a real issue, and may result in high achieving students being unfairly represented in our sample pool.
+                To incentivize more students to respond to the quiz, professors can integrate one or more questions asked on the quiz into an
+                actual quiz or exam that will count for their grades. Quiz questions will still be available to all students to view, but this
+                encourages students to try the quiz for themselves to gauge how well they would do on an exam. Extra credit <em>is NOT</em>
+                recommended as incentives to fill out these surveys; otherwise, that would weaken the consent that is provided to us.
+            </p>
+        </div>
+    </div>
+    <div style="margin: 5vh 20vw; text-align: center;">This project was created by <a href="https://github.com/wanning-lu">Wanning Lu</a>.</div>
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            /* Toggle between adding and removing the "active" class,
+            to highlight the button that controls the panel */
+            this.classList.toggle("active");
+
+            /* Toggle between hiding and showing the active panel */
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    }
+</script>
 </body>
 </html>

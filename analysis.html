@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Data Analysis</title>
+</head>
+
+<body>
+    <div style="display: flex; justify-content: space-between; margin: 3vh 3vw;">
+        <div><a href="index.html" style="text-decoration: none; color: black">Home</a></div>
+        <div class="nav-wrapper">
+            <a href="collection.html">Data Collection</a>
+            <div>|</div>
+            <div>Analysis</div>
+            <div>|</div>
+            <a href="">Results</a>
+        </div>
+        <div></div>
+    </div>
+    <div class="header-title" style="margin-top: 5vh; margin-bottom: 3vh">Analysis</div>
+    <div class="subheading">What model to use?</div>
+    <div class="body-text" style="margin-bottom: 3vh;">
+        To measure the impact of the different teaching styles, I will be using a regression model. Regression models
+        work by optimizing the coefficients to best fit the provided data points. Additionally, since teaching
+        styles will vary professor to professor, I will train multiple regression models to fit each set of
+        unique training styles. Before fitting a model, however, I should address confounding variables. 
+    </div>
+
+    <div class="subheading">Confounding variables and how they introduce bias</div>
+    <div class="body-text" style="margin-bottom: 3vh;">
+        One major ethical concern of models today is that they contain bias, whether it be from target variables
+        that don't accurately measure the goal, skewed data, or metrics for measuring model development. Here, we're
+        concerned about the impact of confounding variables, or bias in our data that may produce false correlations
+        in our data. For example, a professor can use all the "optimal" teaching methods, but still deliver
+        the class in a confusing way such that the efficiency of the methods are diminished. <br/><br/>
+
+        Confounding variables for this study may include the professor, demographics of students, and lecture medium.
+        <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4017459/">Randomization</a>, in our case, would reduce
+        the effects of confoundment. From my dataset, I will randomly sample the required number of data points to
+        satisfy the assumptions for fitting a linear regression model. <br/><br/>
+
+        Another way to control for confounding variables could be stratification, which is where we fix
+        the confounding variables so that they do not vary in groups. An example of how this might be executed
+        is producing a linear regression model on black vs. white students to see if coefficients vary.
+    </div>
+
+    <div class="subheading">Running the models</div>
+    <div class="body-text" style="margin-bottom: 3vh;">
+        Now that I've addressed confounding variables, it's clear that multiple regression models will be run.
+        Since there will be so many models that are fitted, I plan on taking the mean of the coefficients for
+        the teaching styles and constructing confidence intervals for each of them. Then, I will plot the confidence
+        intervals to finally construct my ranking. Additionally, there will be a set of rankings pertaining to
+        each department; this is due to the fact that a STEM class would probably differ in problem type compared
+        to that of a humanities class.
+    </div>
+
+
+    <div style="text-align: center; font-weight: bold; margin: 1vh 30vw; font-size: 1.5rem;">Frequently Asked Questions
+    </div>
+    <div style="margin: 0 30vw;">
+        <button class="accordion">What about overfitting?</button>
+        <div class="panel">
+            <p>Overfitting will depend on the size of the dataset that I ultimately manage to collect. If it
+                represents a good percentage of the departments (think 20-30% of the classes within a department),
+                then it should be generalizable to the rest of the classes in the department, as well as on
+                other campuses. Even then, I will continue with the study to collect data that will be used
+                as validation data. This validation data will be fed to its corresponding regression model,
+                and the loss value will be recorded. Further analysis will then be done on the loss value to
+                determine the fit of the regression model, and whether we need to do further adjusting.
+            </p>
+        </div>
+    </div>
+
+    <div style="margin: 5vh 20vw; text-align: center;">This project was created by <a
+            href="https://github.com/wanning-lu">Wanning Lu</a>.</div>
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                /* Toggle between adding and removing the "active" class,
+                to highlight the button that controls the panel */
+                this.classList.toggle("active");
+
+                /* Toggle between hiding and showing the active panel */
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
